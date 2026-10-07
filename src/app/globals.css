@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-primary: #1B528B;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-heading: "Outfit", sans-serif;
+  --breakpoint-3xl: 120rem;
+
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  p {
+    @apply text-slate-600 leading-relaxed font-light;
+  }
+
+  section {
+    width: 100%;
+  }
+}
+
+@utility my-container {
+  @apply container mx-auto px-4 md:px-8 lg:px-16 2xl:px-24;
+}
+
+/* --- Ultra-Premium Cinematic Animations --- */
+
+/* Slow Ken Burns Zoom */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+/* Advanced Clip-Path Text Reveal */
+@keyframes text-clip {
+  0% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth Letter-Spacing Expansion */
+@keyframes tracking-expand {
+  0% {
+    letter-spacing: -0.05em;
+    opacity: 0;
+    filter: blur(4px);
+  }
+
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Staggered Mask Reveal */
+@keyframes mask-reveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+/* Control Module Progress Line */
+@keyframes progress-fill {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+/* Core Utilities (Zero Arbitrary Brackets) */
+@utility animate-ken-burns {
+  animation: ken-burns 12s ease-out forwards;
+}
+
+@utility animate-text-clip {
+  animation: text-clip 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@utility animate-tracking-expand {
+  animation: tracking-expand 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+@utility animate-mask-reveal {
+  animation: mask-reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@utility animate-progress {
+  animation: progress-fill 6s linear forwards;
+}
+
+/* Stagger Delays */
+@utility delay-200 {
+  animation-delay: 200ms;
+}
+
+@utility delay-400 {
+  animation-delay: 400ms;
+}
+
+@utility delay-600 {
+  animation-delay: 600ms;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: scroll-left 40s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: scroll-right 40s linear infinite;
+}
+
+/* Pause animations when hovering anywhere on the section */
+.pause-on-hover:hover .animate-marquee-left,
+.pause-on-hover:hover .animate-marquee-right {
+  animation-play-state: paused;
+}
